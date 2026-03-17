@@ -1,0 +1,25 @@
+# Data — never commit CSVs (too large for GitHub)
+data/
+*.csv
+
+# Secrets — NEVER commit
+.env
+*.json
+streamlit_app/.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+
+# dbt
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+
+# Great Expectations
+great_expectations/uncommitted/
+
+# Jupyter
+.ipynb_checkpoints/

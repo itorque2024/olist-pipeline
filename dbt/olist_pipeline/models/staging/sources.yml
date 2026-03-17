@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: raw
+    database: sg-20min-town-mod2proj
+    schema: olist_raw
+    tables:
+      - name: orders
+      - name: order_items
+      - name: order_payments
+      - name: order_reviews
+      - name: customers
+      - name: products
+      - name: sellers
+      - name: category_translation

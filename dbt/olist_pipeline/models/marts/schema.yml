@@ -1,0 +1,80 @@
+version: 2
+
+models:
+  - name: fact_orders
+    description: 'Core fact table at order-item grain with all derived metrics'
+    columns:
+      - name: order_item_sk
+        tests: [unique, not_null]
+      - name: order_id
+        tests: [not_null]
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customer')
+              field: customer_id
+      - name: product_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_product')
+              field: product_id
+      - name: seller_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_seller')
+              field: seller_id
+      - name: review_score
+        tests:
+          - accepted_values:
+              values: ['1', '2', '3', '4', '5']
+              quote: false
+              # note: NULLs are ok (not all orders have reviews)
+      - name: total_sale_amount
+        tests: [not_null]
+      - name: order_purchase_date
+        tests: [not_null]
+      - name: order_status
+        tests:
+          - accepted_values:
+              values: ['delivered','shipped','canceled','processing',
+                       'invoiced','unavailable','approved','created']
+
+  - name: mart_customer_rfm
+    description: 'RFM segmentation — one row per unique customer'
+    columns:
+      - name: customer_unique_id
+        tests: [unique, not_null]
+      - name: rfm_segment
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['VIP','Loyal','Big Spender','At-Risk','One-Timer']
+      - name: monetary
+        tests: [not_null]
+      - name: frequency
+        tests: [not_null]
+
+  - name: dim_customer
+    columns:
+      - name: customer_sk
+        tests: [unique, not_null]
+      - name: customer_id
+        tests: [unique, not_null]
+
+  - name: dim_product
+    columns:
+      - name: product_sk
+        tests: [unique, not_null]
+
+  - name: dim_seller
+    columns:
+      - name: seller_sk
+        tests: [unique, not_null]
+
+  - name: dim_date
+    columns:
+      - name: date_sk
+        tests: [unique, not_null]

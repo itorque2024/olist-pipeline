@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GE Validation Report</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 40px; background: #f5f5f5; }
+  h1 { color: #2c3e50; }
+  .summary { background: #27ae60; color: white; padding: 20px; border-radius: 8px; margin-bottom: 24px; }
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; }
+  th { background: #2c3e50; color: white; padding: 12px 16px; text-align: left; }
+  td { padding: 12px 16px; border-bottom: 1px solid #eee; }
+  .meta { color: #999; font-size: 12px; margin-top: 20px; }
+</style>
+</head>
+<body>
+<h1>Great Expectations - Validation Report</h1>
+<div class="summary">
+  <h2>All 8/8 Expectations Passed</h2>
+  <p>Table: olist_marts.fact_orders &nbsp;|&nbsp; Rows: 112,650 &nbsp;|&nbsp; Run: 2026-03-17 11:59</p>
+</div>
+<table>
+  <thead><tr><th>Status</th><th>Expectation</th><th>Column</th></tr></thead>
+  <tbody><tr><td style="color:#27ae60;font-weight:bold">PASS</td><td>expect_column_values_to_not_be_null</td><td><b>order_item_sk</b></td></tr>
+<tr><td style="color:#27ae60;font-weight:bold">PASS</td><td>expect_column_values_to_not_be_null</td><td><b>total_sale_amount</b></td></tr>
+<tr><td style="color:#27ae60;font-weight:bold">PASS</td><td>expect_column_values_to_not_be_null</td><td><b>order_purchase_date</b></td></tr>
+<tr><td style="color:#27ae60;font-weight:bold">PASS</td><td>expect_column_values_to_be_between</td><td><b>review_score</b></td></tr>
+<tr><td style="color:#27ae60;font-weight:bold">PASS</td><td>expect_column_values_to_be_in_set</td><td><b>order_status</b></td></tr>
+<tr><td style="color:#27ae60;font-weight:bold">PASS</td><td>expect_table_row_count_to_be_between</td><td><b>table-level</b></td></tr>
+<tr><td style="color:#27ae60;font-weight:bold">PASS</td><td>expect_column_values_to_not_be_null</td><td><b>customer_id</b></td></tr>
+<tr><td style="color:#27ae60;font-weight:bold">PASS</td><td>expect_column_values_to_not_be_null</td><td><b>product_id</b></td></tr>
+</tbody>
+</table>
+<p class="meta">great_expectations v1.15.1 | Project: sg-20min-town-mod2proj</p>
+</body>
+</html>
