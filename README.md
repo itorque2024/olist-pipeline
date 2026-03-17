@@ -3,6 +3,11 @@
 A portfolio data engineering project demonstrating a production-grade ELT pipeline
 built on the Brazilian Olist e-commerce dataset (100K+ orders, 9 source tables).
 
+## Live Dashboard
+
+[🔗 Streamlit Dashboard](https://olist-pipeline-zjp7prmgx8cu28wcbnqco2.streamlit.app/)
+
+
 ## Business Context
 
 Olist is a Brazilian marketplace connecting SME sellers to consumers. The raw data
