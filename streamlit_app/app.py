@@ -1,21 +1,25 @@
 import streamlit as st
 import pandas as pd
 from google.cloud import bigquery
+from google.oauth2 import service_account
 import plotly.express as px
-import os
 
-PROJECT_ID = os.getenv("GCP_PROJECT_ID", "sg-20min-town-mod2proj")
+PROJECT_ID = "sg-20min-town-mod2proj"
 st.set_page_config(page_title="Olist Analytics", layout="wide")
+
+credentials = service_account.Credentials.from_service_account_info(
+    st.secrets["gcp_service_account"],
+    scopes=["https://www.googleapis.com/auth/cloud-platform"],
+)
 
 @st.cache_data(ttl=3600)
 def run_query(query):
-    client = bigquery.Client(project=PROJECT_ID)
+    client = bigquery.Client(project=PROJECT_ID, credentials=credentials)
     return client.query(query).to_dataframe(create_bqstorage_client=False)
 
 page = st.sidebar.selectbox(
     "Page", ["KPI Overview", "Product Analysis", "Customer Segments"])
 
-# ── PAGE 1: KPI Overview
 if page == "KPI Overview":
     st.title("Olist E-Commerce — KPI Overview")
     kpis = run_query(f"""
@@ -47,7 +51,6 @@ if page == "KPI Overview":
     st.plotly_chart(px.line(df_monthly, x="month", y="gmv",
         title="Monthly GMV", markers=True), use_container_width=True)
 
-# ── PAGE 2: Product Analysis
 elif page == "Product Analysis":
     st.title("Product Category Analysis")
     df = run_query(f"""
@@ -69,7 +72,6 @@ elif page == "Product Analysis":
             color="avg_score", color_continuous_scale="RdYlGn"),
         use_container_width=True)
 
-# ── PAGE 3: Customer Segments
 elif page == "Customer Segments":
     st.title("Customer RFM Segmentation")
     df = run_query(f"""
