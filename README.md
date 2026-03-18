@@ -1,5 +1,12 @@
 # Olist E-Commerce — End-to-End Data Engineering Pipeline
 
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![dbt](https://img.shields.io/badge/dbt-Core%201.11-orange)
+![BigQuery](https://img.shields.io/badge/BigQuery-GCP%20Free%20Tier-blue)
+![Dagster](https://img.shields.io/badge/Orchestration-Dagster-purple)
+![Streamlit](https://img.shields.io/badge/Dashboard-Streamlit-red)
+![GE](https://img.shields.io/badge/Data%20Quality-Great%20Expectations-green)
+
 A portfolio data engineering project demonstrating a production-grade ELT pipeline
 built on the Brazilian Olist e-commerce dataset (100K+ orders, 9 source tables).
 
@@ -190,3 +197,8 @@ the One-Timer segment. Deploy 90-day win-back emails before churn.
 
 [Olist Brazilian E-Commerce Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
 · Kaggle · CC BY-NC-SA 4.0
+
+## Author
+
+**Lewis Chen** — Data Engineering & AI Portfolio  
+Singapore · NTU DSAI · Module 2 Data Engineering  
